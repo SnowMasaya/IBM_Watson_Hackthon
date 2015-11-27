@@ -1,14 +1,12 @@
 #!/usr/bin/python3
 
 from twitter import *
-import subprocess
+from twitter_key import twitter_key
 
-token = (subprocess.check_output("echo $Twitter_Access_Token", stderr=subprocess.STDOUT, shell=True)).decode('utf-8').strip() 
-token_key = (subprocess.check_output("echo $Twitter_Access_Token_Sercert", stderr=subprocess.STDOUT, shell=True)).decode('utf-8').strip() 
-con_secret = (subprocess.check_output("echo $Twitter_Consumer_Key", stderr=subprocess.STDOUT, shell=True)).decode('utf-8').strip() 
-con_secret_key = (subprocess.check_output("echo $Twitter_Consumer_Sercert", stderr=subprocess.STDOUT, shell=True)).decode('utf-8').strip() 
-print(con_secret)
-print(con_secret_key)
+twitter_auth = twitter_key()
+t = Twitter(auth=OAuth(twitter_auth.token, twitter_auth.token_key, twitter_auth.con_secret, twitter_auth.con_secret_key))
+data = t.search.tweets(q="#python", count=100)
 
-t = Twitter(auth=OAuth(token, token_key, con_secret, con_secret_key))
-data = t.search.tweets(q="#python")
+for i in range(len(data["statuses"])):
+    print(data["statuses"][i]["text"], end='')
+    print("," + data["statuses"][i]["entities"]["hashtags"][0]["text"])
