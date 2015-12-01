@@ -3,5 +3,4 @@ simplejson
 pandas
 SPARQLWrapper
 google-api-python-client
-pywatson
 watson-developer-cloud
