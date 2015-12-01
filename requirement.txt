@@ -2,3 +2,4 @@ twitter
 simplejson
 pandas
 SPARQLWrapper
+google-api-python-client
