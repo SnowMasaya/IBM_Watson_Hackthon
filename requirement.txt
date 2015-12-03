@@ -4,3 +4,6 @@ pandas
 SPARQLWrapper
 google-api-python-client
 watson-developer-cloud
+sklearn
+numpy
+scipy
