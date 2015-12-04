@@ -224,3 +224,7 @@ class ModelSearchList:
                 40:"キャリアプラン",
                 41:"研修"
                  } 
+        self.search_unblance_dictionary = { 
+                1:"キャリアプラン",
+                2:"オープン系",
+                }

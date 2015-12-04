@@ -19,7 +19,9 @@ class Watson_api():
         self.text_data = []
         self.target_label = []
         self.watson_crediantial = watson_key()
-        self.watson_classifier = self.watson_crediantial.classifier_twitter_hash_classfier
+        #self.watson_classifier = self.watson_crediantial.classifier_twitter_classfier
+        #self.watson_classifier = self.watson_crediantial.classifier_twitter_hash_classfier
+        self.watson_classifier = self.watson_crediantial.classifier_twitter_unblance_keyword_classfier
         self.natural_language_classifier = NaturalLanguageClassifier(username=self.watson_crediantial.username,
                                                                      password=self.watson_crediantial.password)
         #print(json.dumps(self.natural_language_classifier.list(), indent=2))
@@ -52,7 +54,7 @@ class Watson_api():
         #print (json.dumps(status, indent=2, ensure_ascii=False))
         for i in range(len(self.text_data)):
             classes = self.natural_language_classifier.classify(self.watson_classifier, self.text_data[i])
-            class_id = self.modelSearchList.search_hash_dictionary[classes["classes"][0]["class_name"].replace("\"", "").replace("\"", "")]
+            class_id = self.modelSearchList.search_dictionary[classes["classes"][0]["class_name"].replace("\"", "").replace("\"", "")]
             predict_id.append(class_id)
         print(self.target_label)
         print(predict_id)
