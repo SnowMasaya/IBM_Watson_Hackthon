@@ -228,3 +228,35 @@ class ModelSearchList:
                 1:"キャリアプラン",
                 2:"オープン系",
                 }
+        self.search_priority_dictionary = { 
+                "High":0,
+                "Middle":1,
+                "Low":2,
+                }
+        self.search_priority_char_dictionary = { 
+                0:"High",
+                1:"Middle",
+                2:"Low",
+                }
+        self.search_category_dictionary = { 
+                "NoSetting":0,
+                "ライフライン":1,
+                "交通機関":2,
+                "住宅情報":3,
+                "医療・福祉・健康相談":4,
+                "安否確認":5,
+                "救助":6,
+                "物資要請":7,
+                "生活支援・相談":8,
+                }
+        self.search_category_char_dictionary = { 
+                0: "NoSetting",
+                1: "ライフライン",
+                2: "交通機関",
+                3: "住宅情報",
+                4: "医療・福祉・健康相談",
+                5: "安否確認",
+                6: "救助",
+                7: "物資要請",
+                8: "生活支援・相談"
+                }

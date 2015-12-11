@@ -1,10 +1,12 @@
 import json
 from os.path import join, dirname
-from watson_developer_cloud import NaturalLanguageClassifierV1 as NaturalLanguageClassifier
-from watson_key import watson_key
-from argparse import ArgumentParser
 import subprocess
 import sys
+model_path = (subprocess.check_output("echo $Watson_Retrive_Rank", stderr=subprocess.STDOUT, shell=True)).decode('utf-8').strip()
+sys.path.append(model_path)
+from watson_developer_cloud.retrive_rank_v1 import RetriveRank
+from watson_key import watson_key
+from argparse import ArgumentParser
 model_path = (subprocess.check_output("echo $Watson_model", stderr=subprocess.STDOUT, shell=True)).decode('utf-8').strip()
 sys.path.append(model_path)
 from model_search_list import ModelSearchList
@@ -19,10 +21,6 @@ class Watson_api():
         self.text_data = []
         self.target_label = []
         self.watson_crediantial = watson_key()
-        #self.watson_classifier = self.watson_crediantial.classifier_twitter_classfier
-        #self.watson_classifier = self.watson_crediantial.classifier_twitter_hash_classfier
-        #self.watson_classifier = self.watson_crediantial.classifier_twitter_unblance_keyword_classfier
-        #self.watson_classifier = self.watson_crediantial.twitter_priority_classfier
         self.watson_classifier = self.watson_crediantial.twitter_category_classfier
         self.natural_language_classifier = NaturalLanguageClassifier(username=self.watson_crediantial.username,
                                                                      password=self.watson_crediantial.password)
@@ -68,4 +66,4 @@ class Watson_api():
 if __name__ == "__main__":
     watson_api = Watson_api()
     args = watson_api.parse_args()
-    watson_api.predict(args)
+    #watson_api.predict(args)

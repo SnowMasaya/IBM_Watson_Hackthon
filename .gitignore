@@ -36,3 +36,5 @@ client_secret.json
 watson_execute.sh
 watson_*.txt
 watson_*.csv
+data/
+solar_vev/

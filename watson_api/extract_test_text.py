@@ -21,7 +21,7 @@ class ExtractTextApi():
         p = ArgumentParser(description='Encoder-decoder neural machine trainslation')
         p.add_argument('target_data', help='[in] target_data')
         p.add_argument('predict_data', help='[in] predict_data')
-        p.add_argument('text_data', help='[in] text_data')
+        p.add_argument('text_data', help='[in] text_data csv label include data')
         args = p.parse_args()
 
         return args
@@ -40,8 +40,8 @@ class ExtractTextApi():
         print("target label,predict label,text")
         for i in range(len(self.predict_data)): 
             if self.target_data[i] != self.predict_data[i]:
-                print(self.modelSearchList.search_char_dictionary[self.target_data[i]]+ ",", end="")
-                print(self.modelSearchList.search_char_dictionary[self.predict_data[i]]+ ",", end ="")
+                print(self.modelSearchList.search_category_char_dictionary[self.target_data[i]]+ ",", end="")
+                print(self.modelSearchList.search_category_char_dictionary[self.predict_data[i]]+ ",", end ="")
                 print(self.text_data[i])
 
 if __name__ == "__main__":
